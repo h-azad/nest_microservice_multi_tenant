@@ -1,10 +1,23 @@
-
-import { ActionEnum, CheckPolicies, JwtAuthGuard, LocalAuthGuard, PoliciesGuard, Role, Roles } from '@app/auth-lib';
+import {
+  ActionEnum,
+  CheckPolicies,
+  JwtAuthGuard,
+  LocalAuthGuard,
+  PoliciesGuard,
+  Role,
+  Roles,
+} from '@app/auth-lib';
 import { RolesGuard } from '@app/auth-lib';
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 
 import { AuthServiceService } from './auth-service.service';
-
 
 @Controller()
 export class AuthServiceController {
@@ -17,10 +30,11 @@ export class AuthServiceController {
   }
 
   @Get('hello')
-  @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard,RolesGuard,PoliciesGuard)
-  @CheckPolicies({action:[ActionEnum.Read],resources:'hello'})
-  getHello(@Request() req){
-    return "Hello";
+  // @Roles(Role.Admin)
+  // @UseGuards(JwtAuthGuard, RolesGuard, PoliciesGuard)
+  // @CheckPolicies({ action: [ActionEnum.Read], resources: 'hello' })
+  @UseGuards(JwtAuthGuard)
+  getHello(@Request() req) {
+    return 'Hello';
   }
 }
