@@ -28,7 +28,7 @@ export class SequelizeConfigService implements SequelizeOptionsFactory {
     return {
       dialect: 'mysql',
       host: 'localhost',
-      port: 3306,
+      port: 3333,
       username: 'NewUser',
       password: 'NewUser',
       database: database,
